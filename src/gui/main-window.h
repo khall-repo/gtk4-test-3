@@ -3,12 +3,10 @@
 
 
 
+void activate_main_window_cb(GtkApplication *app, gpointer user_data);
 
-
-int run_gui_application(int argc, char *argv[]);
-
-const char *get_data_display_label0_text(void);
-int set_data_display_label0_text(const char *text);
+// trying to move this to gui.c/h
+//int run_gui_application(int argc, char *argv[]);
 
 
 #endif

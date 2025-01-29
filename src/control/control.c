@@ -9,7 +9,9 @@
 #include <signal.h>
 #include <time.h>
 #include "imain-window.h"
-#include "main-window.h"
+//#include "main-window.h"
+#include "control.h"
+#include "gui.h"
 
 timer_t timebase_timerid;
 

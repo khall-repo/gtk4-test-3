@@ -23,7 +23,8 @@
 #include <time.h>
 #include "config.h"
 #include "imain-window.h"
-#include "main-window.h"
+//#include "main-window.h"
+#include "gui.h"
 #include "control.h"
 
 

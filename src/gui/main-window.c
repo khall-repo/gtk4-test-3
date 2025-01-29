@@ -3,6 +3,7 @@
 #include "config.h"
 #include "imain-window.h"
 #include "main-window.h"
+#include "sub-window.h"
 
 extern IMainWindow imain_window;
 
@@ -169,11 +170,15 @@ static void button0_clicked_cb(GtkButton *button, MainWindow *self)
   gtk_label_set_text(GTK_LABEL(self->data_display_label0), "Button0 was clicked!");
 }
 
-static void activate_cb(GtkApplication *app, gpointer user_data)
+
+// was named activate_cb and was static
+void activate_main_window_cb(GtkApplication *app, gpointer user_data)
 {
   MainWindow *window = g_object_new(main_window_get_type(), "application", app, NULL);
 
   // Store the MainWindow instance in the GtkApplicationWindow
+  // Then you can use it for something later on. Look at the commented out
+  // code at the bottom of this file.
   g_object_set_data(G_OBJECT(window), "main-window-instance", window);
 
   // Connect the button0 signal its the callback function
@@ -190,7 +195,8 @@ static void activate_cb(GtkApplication *app, gpointer user_data)
   //window_update_fn_source_id = g_timeout_add(1000, (GSourceFunc)update_main_window, window);
 }
 
-int run_gui_application(int argc, char *argv[])
+// gonna try to move this to gui.c
+/*int run_gui_application(int argc, char *argv[])
 {
   GtkApplication *main_app;
   int status;
@@ -202,12 +208,12 @@ int run_gui_application(int argc, char *argv[])
   // and that we should use instead use G_APPLICATION_DEFAULT_FLAGS.
   // But on Linux mint AMD64, that doesn't even exist.
   main_app = gtk_application_new("com.example.myapp", G_APPLICATION_FLAGS_NONE);
-  g_signal_connect(main_app, "activate", G_CALLBACK(activate_cb), NULL);
+  g_signal_connect(main_app, "activate", G_CALLBACK(activate_main_window_cb), NULL);
   status = g_application_run(G_APPLICATION(main_app), argc, argv);
 
   g_object_unref(main_app);
   return status;
-}
+}*/
 
 
 // Here is some scrap code.. It works so I'm leaving it here for my own

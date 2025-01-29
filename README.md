@@ -17,9 +17,10 @@ button of the main window.
 interfaces for both windows and start main window, and run initialization
 code for window widgets
 
-  not started
+  in progress. So far, can now start the GtkApplication from gui.c.
 
-- IDK.. maybe a menu bar with a Help > About?
+- IDK.. maybe a menu bar with a Help > About where I can talk some smack about
+Shaun?
 
   not started
 
