@@ -167,9 +167,20 @@ static gboolean update_main_window(MainWindow *self)
 
 static void button0_clicked_cb(GtkButton *button, MainWindow *self)
 {
+  GtkWidget *sub_window;
+
+  // Create a new SubWindow
+  sub_window = sub_window_new();
+  if (sub_window == NULL) {
+      g_printerr("Failed to create SubWindow\n");
+      return;
+  }
+
+  // Show all widgets in the SubWindow
+  gtk_widget_show(sub_window);
+
   gtk_label_set_text(GTK_LABEL(self->data_display_label0), "Button0 was clicked!");
 }
-
 
 // was named activate_cb and was static
 void activate_main_window_cb(GtkApplication *app, gpointer user_data)
