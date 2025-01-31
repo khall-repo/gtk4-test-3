@@ -1,4 +1,6 @@
-
+// Read this to understand some of what is going on..
+// The GLib Object System
+// https://docs.gtk.org/gobject/concepts.html
 
 #include "config.h"
 #include "imain-window.h"

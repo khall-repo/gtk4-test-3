@@ -63,11 +63,6 @@ static void sw_button0_clicked_cb(GtkButton *button, SubWindow *self)
   gtk_label_set_text(GTK_LABEL(self->sw_data_display_label0), "sw_button0 was clicked!");
 }
 
-// So.. don't quite understand quite how returning SubWindow* from a function
-// that is supposed to return GtkWidget* works yet. The GLib Object System is
-// pretty complex and deep. It's pretty darn cool.
-// https://docs.gtk.org/gobject/concepts.html
-// Gonna read it some day. Promise.. maybe.
 GtkWidget* sub_window_new(void)
 {
   SubWindow *window = g_object_new(SUB_WINDOW_TYPE, NULL);
