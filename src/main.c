@@ -2,7 +2,7 @@
  * @file main.c
  * @brief GTK4 Test 3
  * @date 01-29-2025
- * @par The third and possibly final iteration of the GTK4 test project.
+ * @par The third and final iteration of the GTK4 test project.
  * Goals:
  * - Spawn a new window with a data display label and a button, using the bottom
  *   button of the main window.
@@ -13,7 +13,7 @@
  *   interfaces for both windows and start main window.
  *
  * - IDK.. maybe a menu bar with a Help > About?
- *
+ *   nah.
  * After this iteration, I think I should have all the knowledge I need to
  * complete the project for which was the reason I started gtk4-test.
  */

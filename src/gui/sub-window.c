@@ -1,4 +1,3 @@
-#include <gtk/gtk.h>
 #include "config.h"
 #include "sub-window.h"
 
@@ -8,7 +7,7 @@ typedef struct _SubWindow
 
   GtkWidget *sw_col_header_label0;
   GtkWidget *sw_data_display_label0;
-  //GtkWidget *sw_button0;
+  GtkWidget *sw_button0;
 
 } SubWindow;
 
@@ -20,6 +19,7 @@ typedef struct _SubWindowClass
 #define SUB_WINDOW_TYPE (sub_window_get_type())
 #define SUB_WINDOW(obj) (G_TYPE_CHECK_INSTANCE_CAST((obj), SUB_WINDOW_TYPE, SubWindow))
 
+// Register the SubWindow type with the GObject type system
 G_DEFINE_TYPE(SubWindow, sub_window, GTK_TYPE_APPLICATION_WINDOW)
 
 static void sub_window_class_init(SubWindowClass *class)
@@ -36,11 +36,8 @@ static void sub_window_class_init(SubWindowClass *class)
     g_bytes_unref(template_bytes);
 
     gtk_widget_class_bind_template_child(widget_class, SubWindow, sw_col_header_label0);
-
     gtk_widget_class_bind_template_child(widget_class, SubWindow, sw_data_display_label0);
-
-    //gtk_widget_class_bind_template_child(widget_class, SubWindow, sw_button0);
-
+    gtk_widget_class_bind_template_child(widget_class, SubWindow, sw_button0);
   } else {
     g_error("Failed to load SubWindow template: %s\n", error->message);
     g_error_free(error);
@@ -53,7 +50,35 @@ static void sub_window_init(SubWindow *self)
   gtk_widget_init_template(GTK_WIDGET(self));
 }
 
-GtkWidget* sub_window_new(GtkApplication *app)
+static void sub_window_destroy_cb(GtkWidget *widget, gpointer data)
 {
-  return g_object_new(SUB_WINDOW_TYPE, "application", app, NULL);
+  g_print("SubWindow has been closed.\n");
+  
+  // Clean up stuff here if you need to
+  // See main-window.c for example of something you'd clean up.
+}
+
+static void sw_button0_clicked_cb(GtkButton *button, SubWindow *self)
+{
+  gtk_label_set_text(GTK_LABEL(self->sw_data_display_label0), "sw_button0 was clicked!");
+}
+
+// So.. don't quite understand quite how returning SubWindow* from a function
+// that is supposed to return GtkWidget* works yet. The GLib Object System is
+// pretty complex and deep. It's pretty darn cool.
+// https://docs.gtk.org/gobject/concepts.html
+// Gonna read it some day. Promise.. maybe.
+GtkWidget* sub_window_new(void)
+{
+  SubWindow *window = g_object_new(SUB_WINDOW_TYPE, NULL);
+
+  // Store the SubWindow instance, maybe you want to use it later.
+  g_object_set_data(G_OBJECT(window), "sub-window-instance", window);
+
+  // Connect the sw_button0 signal its the callback function
+  g_signal_connect(window->sw_button0, "clicked", G_CALLBACK(sw_button0_clicked_cb), window);
+  // Connect the destroy signal to detect when the window is closed
+  g_signal_connect(window, "destroy", G_CALLBACK(sub_window_destroy_cb), NULL);
+
+  return window;
 }

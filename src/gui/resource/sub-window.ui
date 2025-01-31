@@ -39,6 +39,17 @@
             </child>
           </object>
         </child>
+        <child>
+          <object class="GtkButton" id="sw_button0">
+            <property name="label">sw_button0</property>
+            <property name="hexpand">true</property> 
+            <property name="vexpand">true</property>
+            <layout>
+              <property name="row">2</property>
+              <property name="column">0</property>
+            </layout>
+          </object>
+        </child>
       </object>
     </child>
   </template>

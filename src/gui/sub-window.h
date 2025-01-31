@@ -1,6 +1,8 @@
 #ifndef SUB_WINDOW_H
 #define SUB_WINDOW_H
 
-GtkWidget* sub_window_new();
+#include <gtk/gtk.h>
+
+GtkWidget* sub_window_new(void);
 
 #endif // SUB_WINDOW_H

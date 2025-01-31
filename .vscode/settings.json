@@ -4,6 +4,7 @@
     "time.h": "c",
     "main-window.h": "c",
     "imain-window.h": "c",
-    "gtk.h": "c"
+    "gtk.h": "c",
+    "sub-window.h": "c"
   }
 }

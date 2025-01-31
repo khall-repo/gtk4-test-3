@@ -1,5 +1,5 @@
 
-#include <gtk/gtk.h>
+
 #include "config.h"
 #include "imain-window.h"
 #include "main-window.h"
@@ -61,6 +61,7 @@ typedef struct _MainWindowClass
   GtkApplicationWindowClass parent_class;
 } MainWindowClass;
 
+// Register the MainWindow type with the GObject type system.
 // This macro will actually take the string "my_app_window" and converts it to
 // "main_window_app_class_init" and "main_app_window_init", and stores those
 // names internally. That is how GTK knows where to find the class and init

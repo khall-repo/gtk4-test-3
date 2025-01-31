@@ -7,22 +7,22 @@ Goals for this iteration:
 - Spawn a new window with a data display label and a button, using the bottom
 button of the main window.
 
-  in progress
+  done
 
 - Put the timebase code in a file called control.c.
 
   done
 
-- Play around with using a new file called gui.c to give main.c access to
-interfaces for both windows and start main window, and run initialization
-code for window widgets
+- Create a new file called gui.c to give main.c access to interfaces for both
+windows and start main window, and run initialization code for window widgets
 
-  in progress. So far, can now start the GtkApplication from gui.c.
+  done, but cancelled subwindow interface. Not wasting my time. Time is my most
+  precious resource.
 
-- IDK.. maybe a menu bar with a Help > About where I can talk some smack about
-Shaun?
+- IDK.. maybe a menu bar with a Help > About
 
-  not started
+  ..Not going to waste my time. Cancelled. Will learn this as I go with my real
+  project.
 
 After this iteration, I think I should have all the knowledge I need to
 complete the project for which was the reason I started gtk4-test.
